@@ -1,0 +1,47 @@
+.div-topo {
+    display: flex;
+    justify-content: flex-end;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.botao-add {
+    background-color: #cccccc;
+    color: #666666;
+    margin: 10px;
+}
+
+.botao-edit {
+    background-color: #cccccc;
+    color: #666666;
+    margin: 10px;
+}
+
+.botao-remove {
+    background-color: #cccccc;
+    color: #666666;
+    margin: 10px;
+}
+
+.form {
+    display: flex;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+  
+.full-width {
+    width: 100%;
+    margin-right: 10px;    
+}
+
+.div-form {
+    width: 80%;
+}
+
+.div-botoes {
+    width: 18;
+}
