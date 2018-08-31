@@ -1,7 +1,7 @@
-export class Pessoa {
-    public idpessoa: number;
+export class PessoaModel {
+    public idPessoa: number;
     public nome: string;
     public email: string;
-    public datanascimento: string;
+    public dataNascimento: Date;
     public sexo: string;    
 }

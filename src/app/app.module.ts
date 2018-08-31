@@ -7,10 +7,13 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
-import { HttpModule } from '@angular/http';
+import { HttpModule,  Http, XHRBackend, RequestOptions, JsonpModule } from '@angular/http';
 import { TextMaskModule } from 'angular2-text-mask'
+import { httpFactory } from './http.factory';
+import { PessoaService } from '../services/pessoa.service';
 
 import { AppComponent } from './app.component';
+
 
 @NgModule({
   declarations: [
@@ -27,9 +30,17 @@ import { AppComponent } from './app.component';
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    TextMaskModule
+    TextMaskModule,
+    JsonpModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: Http,
+      useFactory: httpFactory,
+      deps: [XHRBackend, RequestOptions]
+    },
+    PessoaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
