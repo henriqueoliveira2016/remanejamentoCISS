@@ -1,6 +1,6 @@
 .div-topo {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     top: 0;
     left: 0;
     right: 0;
@@ -44,4 +44,38 @@
 
 .div-botoes {
     width: 18;
+}
+
+.toolbar {
+    background: #cccccc;
+}
+
+.div-topo-lista {
+    display: flex;
+    text-align: center;
+    font-weight: bold;
+}
+
+.div-lista {
+    display: flex;
+    text-align: center;
+}
+.span-col-nome {
+    width: 27%;
+}
+
+.span-col-email {
+    width: 19%;
+}
+
+.span-col-nascimento {
+    width: 29%;
+}
+
+.span-col-sexo {
+    width: 19%;
+}
+
+.span-col {
+    width: 25%;
 }

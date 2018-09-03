@@ -23,8 +23,8 @@ export class PessoaService {
             map((res: Response) => {return res.json()}));
     }
 
-    remover(idPessoa: number): Observable<number> {
-        return this.http.get(this.url + '/remover?idPessoa=' + idPessoa).pipe(
+    excluir(idPessoa: number): Observable<number> {
+        return this.http.get(this.url + '/excluir?idPessoa=' + idPessoa).pipe(
             map((res: Response) => {return res.json()}));
     }    
 

@@ -11,13 +11,19 @@ import { HttpModule,  Http, XHRBackend, RequestOptions, JsonpModule } from '@ang
 import { TextMaskModule } from 'angular2-text-mask'
 import { httpFactory } from './http.factory';
 import { PessoaService } from '../services/pessoa.service';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogOverviewExampleDialog } from './app.component';
 
 import { AppComponent } from './app.component';
 
 
 @NgModule({
+  entryComponents: [DialogOverviewExampleDialog],
   declarations: [
-    AppComponent
+    AppComponent,DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,11 @@ import { AppComponent } from './app.component';
     HttpModule,
     ReactiveFormsModule,
     TextMaskModule,
-    JsonpModule
+    JsonpModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatToolbarModule,
+    MatDialogModule
   ],
   providers: [
     {

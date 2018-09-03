@@ -1,23 +1,24 @@
+<mat-toolbar class="toolbar">Lista de Pessoas</mat-toolbar>
 <div class="div-topo" id="pessoa">
     <div class="div-form">
         <form class="form">
             <mat-form-field class="full-width">
-                <input matInput placeholder="Nome" [(ngModel)]="pessoa.nome" type="text" name="nome">
-                <!-- <mat-error align="start" *ngIf="formGroup.get('nome').hasError('required') &&  formGroup.get('nome').touched" class="mat-text-warn" translate>Informe seu Nome</mat-error> -->
+                <input matInput placeholder="Nome" [(ngModel)]="pessoa.nome" type="text" name="nome" [formControl]="nome" required>
             </mat-form-field>
             
             <mat-form-field class="full-width">
-                <input matInput placeholder="E-mail" [(ngModel)]="pessoa.email" type="text" name="email">
-                <!-- <mat-error align="start" *ngIf="formGroup.get('email').hasError('required') &&  formGroup.get('email').touched" class="mat-text-warn">Informe seu E-mail</mat-error> -->
+                <input matInput placeholder="E-mail" [(ngModel)]="pessoa.email" type="text" name="email" [formControl]="email" required>  
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>              
             </mat-form-field>
             <mat-form-field class="full-width" style="width: 15%">
-                <input matInput placeholder="Data de Nascimento" [textMask]="{mask: mask}" [(ngModel)]="pessoa.dataNascimento" name="dataNascimento" type="text">
-                <!-- <mat-error align="start" *ngIf="formGroup.get('datanascimento').hasError('required') &&  formGroup.get('datanascimento').touched" class="mat-text-warn">Informe sua Data de Nascimento</mat-error> -->
+                <input matInput placeholder="Data de Nascimento" [textMask]="{mask: mask}" [(ngModel)]="pessoa.dataNascimento" name="dataNascimento" type="text">                            
             </mat-form-field>
             
-            <mat-form-field class="full-width" style="width: 10%">
-                <input matInput placeholder="Sexo" [(ngModel)]="pessoa.sexo" type="text" required name="sexo">
-                <!-- <mat-error align="start" *ngIf="formGroup.get('sexo').hasError('required') &&  formGroup.get('sexo').touched" class="mat-text-warn">Informe seu Sexo</mat-error> -->
+            <mat-form-field class="full-width" style="width: 10%">                
+                <mat-select [(value)]="selected">
+                    <mat-option value="Masculino">Masculino</mat-option>
+                    <mat-option value="Feminino">Feminino</mat-option>                    
+                </mat-select>
             </mat-form-field>
         </form>
     </div> 
@@ -25,21 +26,31 @@
         <button class="botao-add" mat-mini-fab (click)="salvar(pessoa)">
             <mat-icon>add</mat-icon>
         </button>
-        <button class="botao-edit" mat-mini-fab (click)="editar(selectedOptions)">
+        <button class="botao-edit" *ngIf="list.selectedOptions.selected.length == 1" mat-mini-fab (click)="editar(selectedOptions)">
             <mat-icon>edit</mat-icon>
         </button>
-        <button class="botao-remove" mat-mini-fab (click)="remover(selectedOptions)">
+        <button class="botao-remove"  *ngIf="list.selectedOptions.selected.length == 1" mat-mini-fab (click)="remover(selectedOptions)">
             <mat-icon>delete</mat-icon>
         </button>
     </div>       
 </div>
 <mat-card>
+    <div class="div-topo-lista">
+        <span class="span-col-nome">Nome</span>
+        <span class="span-col-email">E-mail</span>
+        <span class="span-col-nascimento">Data de Nascimento</span>
+        <span class="span-col-sexo">Sexo</span>
+    </div>
     <mat-selection-list #list [(ngModel)]="selectedOptions">
-        <mat-list-option *ngFor="let pessoa of listaPessoas" [value]="pessoa.idPessoa" [selected]='pessoa.selected'>
-            Nome: {{pessoa.nome}}  |  E-mail: {{pessoa.email}}  |  Data de Nascimento: {{pessoa.dataNascimento}}  |  Sexo: {{pessoa.sexo}}
+        <mat-list-option *ngFor="let pessoa of listaPessoas" [value]="pessoa.idPessoa" [selected]="OpcaoSelecionada">            
+            <div class="div-lista">
+                <span class="span-col">{{pessoa.nome}}</span>
+                <span class="span-col">{{pessoa.email}}</span>
+                <span class="span-col">{{pessoa.dataNascimento}}</span>
+                <span class="span-col">{{pessoa.sexo}}</span>                
+            </div>            
         </mat-list-option>
-    </mat-selection-list>
-    <!-- <p>Selected: {{ selectedOptions}}</p> -->
+    </mat-selection-list>       
 </mat-card>
 
 
